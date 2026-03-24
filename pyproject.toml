@@ -1,0 +1,66 @@
+[project]
+name = "jaguarete-workspace"
+version = "0.1.0"
+description = "Jaguarete - AI-Powered Purple Team Platform"
+authors = [
+    { name = "skyvanguard" }
+]
+dependencies = [
+    "jaguarete-core[all]",
+    "jaguarete-agents",
+    "jaguarete-tools",
+    "jaguarete-knowledge",
+    "jaguarete-app",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = "MIT"
+
+[tool.uv.workspace]
+members = [
+    "packages/jaguarete-core",
+    "packages/jaguarete-agents",
+    "packages/jaguarete-tools",
+    "packages/jaguarete-knowledge",
+    "packages/jaguarete-app",
+]
+
+[tool.uv.sources]
+jaguarete-core = { workspace = true }
+jaguarete-agents = { workspace = true }
+jaguarete-tools = { workspace = true }
+jaguarete-knowledge = { workspace = true }
+jaguarete-app = { workspace = true }
+
+[tool.uv]
+managed = true
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "pytest_asyncio",
+    "ruff>=0.9.1",
+    "pytest-mock>=3.14.0",
+    "pytest-cov>=6.0.0",
+    "mypy>=1.15.0",
+    "pre-commit>=4.2.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["packages"]
+addopts = ["--import-mode=importlib"]
+python_files = ["test_*.py", "*_test.py"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["jaguarete", "jaguarete_agents", "jaguarete_tools", "jaguarete_knowledge", "jaguarete_app"]
