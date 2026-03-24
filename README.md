@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="web/public/LOGO.png" alt="Jaguarete" width="120" />
-</p>
-
 <h1 align="center">Jaguarete</h1>
 
 <p align="center">
